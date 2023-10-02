@@ -4,9 +4,6 @@ const app = express();
 const port = 4000;
 const cors = require('cors');
 
-
-// Use cors middleware before your routes
-
 app.use('/', express.static('public'));
 app.use(cors({
     origin: 'http://localhost:3000',

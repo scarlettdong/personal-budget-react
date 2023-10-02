@@ -11,38 +11,6 @@ function HomePage() {
     useEffect(() => {
         axios.get('http://localhost:4000/budget')
             .then(response => {
-                // console.log("Data from server:", response.data);
-                // const data = response.data.myBudget;
-                // // const labels = data.map(item => item.title);
-                // // const values = data.map(item => item.budget);
-
-                // // setChartData({
-                // //     labels: labels,
-                // //     datasets: [{
-                // //         label: 'Budget Data',
-                // //         data: values,
-                // //         backgroundColor: 'rgba(75,192,192,0.2)', 
-                // //         borderColor: 'rgba(75,192,192,1)',
-                // //         borderWidth: 1
-                // //     }]
-                // // });
-                // if (data && data.length > 0) {
-                //     const labels = data.map(item => item.title);
-                //     const values = data.map(item => item.budget);
-                
-                //     setChartData({
-                //         labels: labels,
-                //         datasets: [{
-                //             label: 'Budget Data',
-                //             data: values,
-                //             backgroundColor: 'rgba(75,192,192,0.2)', 
-                //             borderColor: 'rgba(75,192,192,1)',
-                //             borderWidth: 1
-                //         }]
-                //     });
-                // } else {
-                //     console.log("chart data error");
-                // }
                 setBudgetData(response.data.myBudget);
             })
             .catch(error => {
