@@ -1,8 +1,9 @@
-import '../App.css';
+import '../App.scss';
 import React from 'react';
 import {
     Link,
   } from "react-router-dom";
+import '../index.scss';
 
 function Menu() {
   return (

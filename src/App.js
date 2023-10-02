@@ -1,10 +1,14 @@
-import './App.css';
+import './App.scss';
 import {
   BrowserRouter as Router,
   Route,
   Routes
 } from "react-router-dom";
-
+import axios from 'axios';
+import { Line } from 'react-chartjs-2';
+import * as d3 from 'd3';
+import React, { useState, useEffect } from 'react';
+import './index.scss';
 
 import Menu from './Menu/Menu';
 import Hero from './Hero/Hero';

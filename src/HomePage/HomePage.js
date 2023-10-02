@@ -1,7 +1,57 @@
-import '../App.css';
+import '../App.scss';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Line } from 'react-chartjs-2';
+import PieChart from './PieChart'; 
+
 
 function HomePage() {
+    const [budgetData, setBudgetData] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:4000/budget')
+            .then(response => {
+                // console.log("Data from server:", response.data);
+                // const data = response.data.myBudget;
+                // // const labels = data.map(item => item.title);
+                // // const values = data.map(item => item.budget);
+
+                // // setChartData({
+                // //     labels: labels,
+                // //     datasets: [{
+                // //         label: 'Budget Data',
+                // //         data: values,
+                // //         backgroundColor: 'rgba(75,192,192,0.2)', 
+                // //         borderColor: 'rgba(75,192,192,1)',
+                // //         borderWidth: 1
+                // //     }]
+                // // });
+                // if (data && data.length > 0) {
+                //     const labels = data.map(item => item.title);
+                //     const values = data.map(item => item.budget);
+                
+                //     setChartData({
+                //         labels: labels,
+                //         datasets: [{
+                //             label: 'Budget Data',
+                //             data: values,
+                //             backgroundColor: 'rgba(75,192,192,0.2)', 
+                //             borderColor: 'rgba(75,192,192,1)',
+                //             borderWidth: 1
+                //         }]
+                //     });
+                // } else {
+                //     console.log("chart data error");
+                // }
+                setBudgetData(response.data.myBudget);
+            })
+            .catch(error => {
+                console.error("Error fetching the data", error);
+            });
+    }, []);
+
   return (
+    
     <main className="center" id="main">
 
         <div className="page-area">
@@ -33,10 +83,7 @@ function HomePage() {
 
             <article>
                 <h1>Chart</h1>
-                <button className="randomize">randomize</button>
-                <p>
-                    <canvas id="myChart" width="400" height="400"></canvas>
-                </p>
+                <PieChart budgetData={budgetData} />
             </article>
 
         </div>
